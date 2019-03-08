@@ -5,4 +5,4 @@ export MODULES="base(network,gui(pijam))"
 # if set will resize root partition on image after build to minimum size + 
 # provided size in MB
 export BASE_IMAGE_RESIZEROOT=200
-export GUI_STARTUP_SCRIPT=npm start
+export GUI_STARTUP_SCRIPT=/home/pi/scripts/run_pijam.sh
