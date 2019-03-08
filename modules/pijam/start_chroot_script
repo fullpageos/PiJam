@@ -29,6 +29,7 @@ npm install electron@3.0.13 -g --arch=armv7l --platform=linux --unsafe-perm=true
 sudo -u pi mkdir -p /home/pi/electron
 pushd /home/pi/electron
     gitclone PIJAM_FULLPAGEOS_DASHBOARD_CLIENT_REPO fullpagedashboard-client
+    gitclone PIJAM_FULLPAGEOS_EXPERIMENAL_SHELL_SCRIPTS_REPO fullpageos-experimental-shell-scripts
     pushd fullpagedashboard-client
         sudo -u pi npm install
     popd
