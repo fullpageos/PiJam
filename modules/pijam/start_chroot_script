@@ -17,8 +17,28 @@ unpack /filesystem/home/pi /home/pi pi
 unpack /filesystem/home/root /root root
 unpack /filesystem/boot /boot
 
-echo "This is an example module, install and set up what you need here!"
-echo "$PIJAM_VAR"
+curl -sL https://deb.nodesource.com/setup_10.x | bash -
+
+#echo "This is an example module, install and set up what you need here!"
+#echo "$PIJAM_VAR"
+apt-get update
+apt-get -y --force-yes screen pcmanfm
+apt-get -y --force-yes  nodejs
+npm install electron@3.0.13 -g --arch=armv7l --platform=linux --unsafe-perm=true --allow-root
+
+sudo -u pi mkdir -p /home/pi/electron
+pushd /home/pi/electron
+    gitclone PIJAM_FULLPAGEOS_DASHBOARD_CLIENT_REPO fullpagedashboard-client
+    pushd fullpagedashboard-client
+        sudo -u pi npm install
+    popd
+popd
+
+
+
+# Replace the default LXDE desktop background with FullPageOS background
+#wget https://i.ibb.co/HnPGMkb/lxde-desktop-background-fullpageos-logo-blackbg-1920x1080.png
+#pcmanfm --set-wallpaper="/home/pi/Pictures/lxde-desktop-background-fullpageos-logo-blackbg-1920x1080.png"
 
 # Unpack root at the end, so files are modified before
 unpack /filesystem/root /
