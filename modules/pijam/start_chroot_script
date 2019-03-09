@@ -22,7 +22,7 @@ curl -sL https://deb.nodesource.com/setup_10.x | bash -
 #echo "This is an example module, install and set up what you need here!"
 #echo "$PIJAM_VAR"
 apt-get update
-apt-get -y --force-yes install screen pcmanfm git
+apt-get -y --force-yes install screen pcmanfm git libgconf-2-4
 apt-get -y --force-yes install nodejs
 npm install electron@3.0.13 -g --arch=armv7l --platform=linux --unsafe-perm=true --allow-root
 
