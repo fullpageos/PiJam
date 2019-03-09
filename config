@@ -2,6 +2,9 @@ export DIST_NAME=PiJam
 export DIST_VERSION=0.1.0
 export MODULES="base(network,gui(pijam))"
 
+# if set will enlarge root parition prior to build by provided size in MB
+export BASE_IMAGE_ENLARGEROOT=1000
+
 # if set will resize root partition on image after build to minimum size + 
 # provided size in MB
 export BASE_IMAGE_RESIZEROOT=200
