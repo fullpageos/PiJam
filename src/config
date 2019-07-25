@@ -1,6 +1,6 @@
 export DIST_NAME=PiJam
-export DIST_VERSION=0.3.0
-export MODULES="base(network,gui(pijam))"
+export DIST_VERSION=0.3.1
+export MODULES="base(network, disable-services(gui(pijam), auto-hotspot, usage-statistics))"
 
 # if set will enlarge root parition prior to build by provided size in MB
 export BASE_IMAGE_ENLARGEROOT=1000
@@ -8,4 +8,6 @@ export BASE_IMAGE_ENLARGEROOT=1000
 # if set will resize root partition on image after build to minimum size + 
 # provided size in MB
 export BASE_IMAGE_RESIZEROOT=200
+
 export GUI_STARTUP_SCRIPT=/home/pi/scripts/run_pijam.sh
+export USAGE_STATISTICS_URL=https://fullpageos-tracking.gnethomelinux.com

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-# <Script Name>
-# <Description what this module does>
-# Written by <Author>
+# PiJam
+# Integrates fullpagedashboard-client into Raspbian
+# Written by Tailor Vijay
 # GPL V3
 ########
 
@@ -22,6 +22,12 @@ curl -sL https://deb.nodesource.com/setup_10.x | bash -
 #echo "This is an example module, install and set up what you need here!"
 #echo "$PIJAM_VAR"
 apt-get update
+apt-get upgrade
+apt-get dist-upgrade
+apt-get clean
+apt-get install screen
+apt-get install unclutter
+rpi-update
 
 # Workaround for bug https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=917633
 apt-get -y --force-yes install udisks2 || true
@@ -30,7 +36,10 @@ apt-get -y --force-yes install -f
 
 apt-get -y --force-yes install screen pcmanfm git libgconf-2-4 gvfs
 apt-get -y --force-yes install nodejs
-npm install electron@3.0.13 -g --arch=armv7l --platform=linux --unsafe-perm=true --allow-root
+#npm install electron@3.0.13 -g --arch=armv7l --platform=linux --unsafe-perm=true --allow-root
+# get rid of the settings wizard on desktop startup:
+rm /etc/xdg/autostart/piwiz.desktop
+cp /home/pi/Pictures/lxde-desktop-background-fullpageos-logo-blackbg-1920x1080.png /usr/share/plymouth/themes/pix/splash.png
 
 sudo -u pi mkdir -p /home/pi/electron
 pushd /home/pi/electron
@@ -40,12 +49,6 @@ pushd /home/pi/electron
         sudo -u pi npm install
     popd
 popd
-
-
-
-# Replace the default LXDE desktop background with FullPageOS background
-#wget https://i.ibb.co/HnPGMkb/lxde-desktop-background-fullpageos-logo-blackbg-1920x1080.png
-#pcmanfm --set-wallpaper="/home/pi/Pictures/lxde-desktop-background-fullpageos-logo-blackbg-1920x1080.png"
 
 # Unpack root at the end, so files are modified before
 unpack /filesystem/root /
